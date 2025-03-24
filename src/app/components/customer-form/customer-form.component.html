@@ -1,0 +1,40 @@
+<div class="customer-form container">
+  <h2 class="form-title">{{ isEditMode ? 'Edit' : 'Add' }} Customer</h2>
+
+  <!-- Error message -->
+  <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+
+  <form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label>First Name:</label>
+      <input type="text" formControlName="firstName">
+      <div *ngIf="customerForm.get('firstName')?.invalid && customerForm.get('firstName')?.touched" 
+           class="validation-error">
+        First name is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Last Name:</label>
+      <input type="text" formControlName="lastName">
+      <div *ngIf="customerForm.get('lastName')?.invalid && customerForm.get('lastName')?.touched" 
+           class="validation-error">
+        Last name is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Email:</label>
+      <input type="email" formControlName="email">
+      <div *ngIf="customerForm.get('email')?.invalid && customerForm.get('email')?.touched" 
+           class="validation-error">
+        Valid email is required.
+      </div>
+    </div>
+
+    <div class="button-group">
+      <button class="btn btn-primary" type="submit" [disabled]="customerForm.invalid">Save</button>
+      <button class="btn btn-cancel" type="button" (click)="router.navigate(['/customers'])">Cancel</button>
+    </div>
+  </form>
+</div>

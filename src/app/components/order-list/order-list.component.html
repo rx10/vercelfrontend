@@ -1,0 +1,44 @@
+<div class="order-list container">
+  <div class="table-header">
+    <h2>Orders</h2>
+    <button class="btn btn-primary" routerLink="/orders/add">
+      <i class="fas fa-plus"></i> Add New Order
+    </button>
+  </div>
+
+  <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+
+  <table *ngIf="orders.length > 0" class="order-table">
+    <thead>
+      <tr>
+        <th>Product Name</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Customer ID</th>
+        <th>Created At</th>
+        <th class="actions-cell">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of orders">
+        <td>{{ order.productName }}</td>
+        <td>{{ order.quantity }}</td>
+        <td>{{ order.price | currency }}</td>
+        <td>{{ order.customerId }}</td>
+        <td>{{ order.createdAt | date: 'medium' }}</td>
+        <td class="actions-cell">
+          <button class="btn btn-primary" [routerLink]="['/orders/edit', order.id]">
+            Edit
+            <i class="fas fa-edit"></i>
+          </button>
+          <button class="btn btn-danger" (click)="deleteOrder(order.id)">
+            Delete
+            <i class="fas fa-trash"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p *ngIf="orders.length === 0" class="no-records">Orders not found.</p>
+</div>

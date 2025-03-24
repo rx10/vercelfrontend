@@ -1,0 +1,53 @@
+<div class="order-form container">
+  <h2 class="form-title">{{ isEditMode ? 'Edit' : 'Create' }} Order</h2>
+
+  <!-- Error message -->
+  <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+
+  <form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label>Product Name:</label>
+      <input type="text" formControlName="productName">
+      <div *ngIf="orderForm.get('productName')?.invalid && orderForm.get('productName')?.touched" 
+           class="validation-error">
+        Product name is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Quantity:</label>
+      <input type="number" formControlName="quantity">
+      <div *ngIf="orderForm.get('quantity')?.invalid && orderForm.get('quantity')?.touched" 
+           class="validation-error">
+        Quantity is required and must be at least 1.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Price:</label>
+      <input type="number" formControlName="price">
+      <div *ngIf="orderForm.get('price')?.invalid && orderForm.get('price')?.touched" 
+           class="validation-error">
+        Price is required and must be a positive number.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Customer ID:</label>
+      <input type="number" formControlName="customerId">
+      <div *ngIf="orderForm.get('customerId')?.invalid && orderForm.get('customerId')?.touched" 
+           class="validation-error">
+        Customer ID is required.
+      </div>
+    </div>
+
+    <div class="button-group">
+      <button type="submit" class="btn btn-primary" [disabled]="orderForm.invalid">
+        Save
+      </button>
+      <button type="button" class="btn btn-cancel" (click)="router.navigate(['/orders'])">
+        Cancel
+      </button>
+    </div>
+  </form>
+</div>

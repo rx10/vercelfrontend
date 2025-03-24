@@ -1,0 +1,42 @@
+<div class="customer-list container">
+  <div class="table-header">
+    <h2>Customers</h2>
+    <button class="btn btn-primary" routerLink="/customers/add">
+      <i class="fas fa-plus"></i> Add New Customer
+    </button>
+  </div>
+
+  <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+
+  <table *ngIf="customers.length > 0" class="customer-table">
+    <thead>
+      <tr>
+        <th>Customer ID</th> <!-- New column -->
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th class="actions-cell">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let customer of customers">
+        <td>{{ customer.id }}</td> <!-- Display customerId -->
+        <td>{{ customer.firstName }}</td>
+        <td>{{ customer.lastName }}</td>
+        <td>{{ customer.email }}</td>
+        <td class="actions-cell">
+          <button class="btn btn-primary" [routerLink]="['/customers/edit', customer.id]">
+            Edit
+            <i class="fas fa-edit"></i>
+          </button>
+          <button class="btn btn-danger" (click)="deleteCustomer(customer.id)">
+            Delete
+            <i class="fas fa-trash"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p *ngIf="customers.length === 0" class="no-records">Customers not found.</p>
+</div>
