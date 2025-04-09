@@ -1,14 +1,9 @@
 .order-list {
-  background: var(--bg-light);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-md);
-  padding: var(--space-md);
   margin: var(--space-md) 0;
   overflow-x: auto;
-  transition: all var(--transition-speed) var(--transition-easing);
 }
 
-.table-header {
+.order-list .table-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -17,59 +12,29 @@
   gap: var(--space-sm);
 }
 
-.table-title {
+.order-list .table-title {
   margin: 0;
   color: var(--primary-color);
-  font-size: 1.25rem;
+  font-size: var(--font-size-lg);
   font-weight: 600;
 }
 
-.btn {
-  padding: var(--space-sm) var(--space-md);
-  border: none;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  font-weight: 500;
-  font-size: 0.9375rem;
-  transition: all var(--transition-speed) var(--transition-easing);
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-xs);
-  min-width: 120px;
-}
-
-.btn-primary {
-  background-color: var(--secondary-color);
-  color: white;
-  box-shadow: var(--shadow-sm);
-}
-
-.btn-primary:hover {
-  background-color: #2980b9;
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-md);
-}
-
-.btn-primary:active {
-  transform: translateY(0);
-}
-
-table {
+.order-list table {
   width: 100%;
   border-collapse: collapse;
   margin-top: var(--space-sm);
   min-width: 600px;
-  font-size: 0.9375rem;
+  font-size: var(--font-size-md);
 }
 
-th, td {
+.order-list th, .order-list td {
   padding: var(--space-sm);
   text-align: left;
   border-bottom: 1px solid var(--border-color);
   vertical-align: middle;
 }
 
-th {
+.order-list th {
   background-color: var(--primary-color);
   color: white;
   font-weight: 600;
@@ -78,112 +43,94 @@ th {
   white-space: nowrap;
 }
 
-tr {
+.order-list tr {
   transition: background-color var(--transition-speed) var(--transition-easing);
 }
 
-tr:hover {
+.order-list tr:hover {
   background-color: var(--bg-lighter);
 }
 
-.actions-cell {
+.order-list .actions-cell {
   width: 160px;
   text-align: right;
   white-space: nowrap;
 }
 
-.btn-danger {
-  background-color: var(--danger-color);
-  color: white;
+.order-list .btn-danger {
   margin-left: var(--space-xs);
   padding: var(--space-xs) var(--space-sm);
-  box-shadow: var(--shadow-sm);
+  min-width: auto;
 }
 
-.btn-danger:hover {
-  background-color: #c0392b;
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-md);
-}
-
-.btn-danger:active {
-  transform: translateY(0);
-}
-
-.no-records {
+.order-list .no-records {
   text-align: center;
   padding: var(--space-lg);
   color: var(--text-light);
-  font-size: 1rem;
+  font-size: var(--font-size-md);
   background-color: var(--bg-lighter);
   border-radius: var(--radius-md);
   margin: var(--space-sm) 0;
 }
 
-.status-badge {
+.order-list .status-badge {
   display: inline-block;
   padding: var(--space-xs) var(--space-sm);
   border-radius: var(--radius-full);
-  font-size: 0.8125rem;
+  font-size: var(--font-size-sm);
   font-weight: 500;
 }
 
-.status-pending {
+.order-list .status-pending {
   background-color: #fef3c7;
   color: #d97706;
 }
 
-.status-completed {
+.order-list .status-completed {
   background-color: #d1fae5;
   color: #059669;
 }
 
-.status-cancelled {
+.order-list .status-cancelled {
   background-color: #fee2e2;
   color: #dc2626;
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  .order-list {
-    padding: var(--space-sm);
-    border-radius: var(--radius-md);
-  }
-  
-  .table-header {
+  .order-list .table-header {
     flex-direction: column;
     align-items: flex-start;
   }
   
-  .btn {
+  .order-list .btn {
     width: 100%;
   }
   
-  .actions-cell {
+  .order-list .actions-cell {
     width: auto;
     display: flex;
     justify-content: flex-end;
     gap: var(--space-xs);
   }
   
-  th, td {
+  .order-list th, .order-list td {
     padding: var(--space-xs);
-    font-size: 0.875rem;
+    font-size: var(--font-size-sm);
   }
 }
 
 @media (max-width: 480px) {
-  .no-records {
+  .order-list .no-records {
     padding: var(--space-md);
-    font-size: 0.9375rem;
   }
   
-  .btn {
+  .order-list .btn {
     padding: var(--space-xs) var(--space-sm);
-    font-size: 0.875rem;
+    font-size: var(--font-size-sm);
   }
   
-  table {
+  .order-list table {
     min-width: 100%;
   }
 }
